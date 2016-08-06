@@ -34,6 +34,11 @@ class JapanHotelSpider(Spider):
             url = response.urljoin(href.extract())
             yield Request(url, callback=self.parse_hotel)
 
+        next_page = response.xpath('//div[@class="unified pagination standard_pagination"]/a/@href')
+        if next_page:
+            url = response.urljoin(next_page[-1].extract())
+            yield Request(url, self.parse_hotel_list)
+
     def parse_hotel(self, response):
         self.logger.info('Hotel detail page url: %s' % response.url)
         item = HotelItem()
@@ -68,7 +73,7 @@ class JapanHotelSpider(Spider):
         except Exception, e:
             self.logger.error(e)
             item['rank'] = ""
-            
+
         item['url'] = response.url
 
         # 地址
