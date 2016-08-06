@@ -44,18 +44,31 @@ class JapanHotelSpider(Spider):
             self.logger.error(e)
             item['name_en'] = ''
 
+        try:
+            item['review_stars'] = response.xpath('//img[@property="ratingValue"]/@content').extract()[0]
+            item['review_qty'] = response.xpath('//a[@property="reviewCount"]/@content').extract()[0]
+        except Exception as e:
+            self.logger.error(e)
+            item['review_stars'] = ""
+            item['review_qty'] = ""
 
-        item['review_stars'] = response.xpath('//img[@property="ratingValue"]/@content').extract()[0]
-        item['review_qty'] = response.xpath('//a[@property="reviewCount"]/@content').extract()[0]
-
-        item['classes'] = response.xpath('//div[starts-with(@class, "popRanking")]/a/text()').extract()[0].split('/')[1].split(' ')[0]
+        try:
+            item['classes'] = response.xpath('//div[starts-with(@class, "popRanking")]/a/text()').extract()[0].split('/')[1].split(' ')[0]
+        except Exception, e:
+            self.logger.error(e)
+            item['classes'] = ""
         
-        rank_str = response.xpath('//div[starts-with(@class, "popRanking")]/b[@class="rank"]/text()').extract()[0]
-        regx = r'(\d+)'
-        pm = re.search(regx, rank_str)
-        rank = pm.group(1)
-        total = response.xpath('//div[starts-with(@class, "popRanking")]/a/text()').extract()[0].split('/')[1].split(' ')[2]
-        item['rank'] = '/'.join([rank, total])
+        try:
+            rank_str = response.xpath('//div[starts-with(@class, "popRanking")]/b[@class="rank"]/text()').extract()[0]
+            regx = r'(\d+)'
+            pm = re.search(regx, rank_str)
+            rank = pm.group(1)
+            total = response.xpath('//div[starts-with(@class, "popRanking")]/a/text()').extract()[0].split('/')[1].split(' ')[2]
+            item['rank'] = '/'.join([rank, total])
+        except Exception, e:
+            self.logger.error(e)
+            item['rank'] = ""
+            
         item['url'] = response.url
 
         # 地址
