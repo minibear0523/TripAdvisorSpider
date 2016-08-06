@@ -23,6 +23,14 @@ def deploy():
         run('git pull')
 
 
+def scrapy():
+    code_dir = '/home/minibear/projects/TripAdvisorSpider'
+    with cd(code_dir):
+        run('git pull')
+        run('scrapy crawl japan_hotel')
+
+
 def d():
     prepare_deploy()
     deploy()
+    scrapy()
