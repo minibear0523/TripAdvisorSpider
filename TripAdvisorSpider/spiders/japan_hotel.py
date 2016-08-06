@@ -60,7 +60,10 @@ class JapanHotelSpider(Spider):
         item['special'] = property_tags
 
         # 等级
-        item['level'] = response.xpath('//span[@class="tag"]/text()').extract()[-1]
+        try:
+            item['level'] = response.xpath('//span[@class="tag"]/text()').extract()[-1]
+        except:
+            item['level'] = ""
 
         # 活动设施, 客房类型, 网络, 服务
         for amenity in response.xpath('//div[@class="amenity_row"]'):
