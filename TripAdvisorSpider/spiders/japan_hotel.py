@@ -28,7 +28,8 @@ class JapanHotelSpider(Spider):
         item['name'] = ''.join(response.xpath('//h1[@id="HEADING"]/text()').extract()).strip()
         try:
             item['name_en'] = ''.join(response.xpath('//h1[@id="HEADING"]/span[@class="altHead"]/text()').extract()).strip()
-        except:
+        except Exception as e:
+            self.logger.error(e)
             item['name_en'] = ''
 
 
@@ -62,7 +63,8 @@ class JapanHotelSpider(Spider):
         # 等级
         try:
             item['level'] = response.xpath('//span[@class="tag"]/text()').extract()[-1]
-        except:
+        except Exception as e:
+            self.logger.error(e)
             item['level'] = ""
 
         # 活动设施, 客房类型, 网络, 服务
@@ -118,13 +120,15 @@ class JapanHotelSpider(Spider):
         
         try:
             item['price'] = response.xpath('//span[@class="priceRange"]/text()')[0].extract()
-        except:
+        except Exception as e:
+            self.logger.error(e)
             item['price'] = ''
 
         try:
             item['lat'] = response.xpath('//div[@class="mapContainer"]/@data-lat')[0].extract()
             item['lng'] = response.xpath('//div[@class="mapContainer"]/@data-lng')[0].extract()
-        except:
+        except Exception as e:
+            self.logger.error(e)
             item['lat'] = ''
             item['lng'] = ''
         self.logger.debug(item)
