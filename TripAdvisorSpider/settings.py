@@ -66,6 +66,7 @@ ROBOTSTXT_OBEY = False
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
    'TripAdvisorSpider.pipelines.DuplicatesPipeline': 300,
+   'TripAdvisorSpider.pipelines.MongoPipeline': 800
 }
 
 # MongoDB Settings
