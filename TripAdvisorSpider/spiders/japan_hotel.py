@@ -7,6 +7,7 @@ import re
 class JapanHotelSpider(Spider):
     name = "japan_hotel"
     collection_name = 'hotel'
+    level = [u'豪华', u'中等', u'经济实惠']
     start_urls = [
         # "http://www.tripadvisor.cn/Hotels-g298184-Tokyo_Tokyo_Prefecture_Kanto-Hotels.html",
         # "http://www.tripadvisor.cn/Hotels-g298564-Kyoto_Kyoto_Prefecture_Kinki-Hotels.html",
@@ -120,11 +121,21 @@ class JapanHotelSpider(Spider):
         total = response.xpath('//div[starts-with(@class, "popRanking")]/a/text()').extract()[0].split('/')[1].split(' ')[2]
         item['rank'] = '/'.join([rank, total])
         item['url'] = response.url
+
+        # 地址
         address_list = []
-        address_list.append(response.xpath('//span[@property="addressRegion"]/text()').extract()[0])
-        address_list.append(response.xpath('//span[@property="addressLocality"]/text()').extract()[0])
-        address_list.append(response.xpath('//span[@property="streetAddress"]/text()').extract()[0])
-        address_list.append(response.xpath('//span[@property="postalCode"]/text()').extract()[0])
+        region = response.xpath('//span[@property="addressRegion"]/text()').extract()
+        if len(region) > 0:
+            address_list.append(region[0])
+        locality = response.xpath('//span[@property="addressLocality"]/text()').extract()
+        if len(locality) > 0:
+            address_list.append(locality[0])
+        street = response.xpath('//span[@property="streetAddress"]/text()').extract()
+        if len(street) > 0:            
+            address_list.append(street[0])
+        postal = response.xpath('//span[@property="postalCode"]/text()').extract()
+        if len(postal) > 0:
+            address_list.append(postal[0])
         item['address'] = ''.join(address_list)
         item['locality'] = address_list[:2]
 
@@ -137,7 +148,11 @@ class JapanHotelSpider(Spider):
 
         # 等级
         try:
-            item['level'] = response.xpath('//span[@class="tag"]/text()').extract()[-1]
+            item['level'] = ""
+            for tag in response.xpath('//span[@class="tag"]/text()').extract():
+                if tag.strip() in self.level:
+                    item['level'] = tag.strip()
+                    break
         except Exception as e:
             self.logger.error(e)
             item['level'] = ""
