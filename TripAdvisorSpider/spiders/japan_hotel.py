@@ -18,7 +18,7 @@ class JapanHotelSpider(Spider):
             self.start_urls = [kwargs.get('start_url')]
 
     def parse(self, response):
-        self.logger.info("Hotel list page url: %s" % response.url)
+        self.logger.info("Locality list page url: %s" % response.url)
         for city in response.xpath('//div[@class="geo_name"]/a/@href').extract():
             url = response.urljoin(city)
             yield Request(url, callback=self.parse_hotel_list)
@@ -29,11 +29,13 @@ class JapanHotelSpider(Spider):
             yield Request(url, self.parse)
 
     def parse_hotel_list(self, response):
+        self.logger.info('Hotel list page url: %s' % response.url)
         for href in response.xpath('//div[@class="listing_title"]/a/@href'):
             url = response.urljoin(href.extract())
             yield Request(url, callback=self.parse_hotel)
 
     def parse_hotel(self, response):
+        self.logger.info('Hotel detail page url: %s' % response.url)
         item = HotelItem()
         item['name'] = ''.join(response.xpath('//h1[@id="HEADING"]/text()').extract()).strip()
         try:

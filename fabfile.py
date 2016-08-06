@@ -33,4 +33,3 @@ def scrapy():
 def d():
     prepare_deploy()
     deploy()
-    scrapy()
