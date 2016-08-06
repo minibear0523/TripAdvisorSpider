@@ -9,77 +9,6 @@ class JapanHotelSpider(Spider):
     collection_name = 'hotel'
     level = [u'豪华', u'中等', u'经济实惠']
     start_urls = [
-        # "http://www.tripadvisor.cn/Hotels-g298184-Tokyo_Tokyo_Prefecture_Kanto-Hotels.html",
-        # "http://www.tripadvisor.cn/Hotels-g298564-Kyoto_Kyoto_Prefecture_Kinki-Hotels.html",
-        # "http://www.tripadvisor.cn/Hotels-g298566-Osaka_Osaka_Prefecture_Kinki-Hotels.html",
-        # "http://www.tripadvisor.cn/Hotels-g298560-Sapporo_Hokkaido-Hotels.html",
-        # "http://www.tripadvisor.cn/Hotels-g298207-Fukuoka_Fukuoka_Prefecture_Kyushu_Okinawa-Hotels.html",
-        # "http://www.tripadvisor.cn/Hotels-g298561-Hiroshima_Hiroshima_Prefecture_Chugoku-Hotels.html",
-        # "http://www.tripadvisor.cn/Hotels-g1120615-Hakuba_mura_Kitaazumi_gun_Nagano_Prefecture_Chubu-Hotels.html",
-        # "http://www.tripadvisor.cn/Hotels-g298224-Naha_Okinawa_Prefecture_Kyushu_Okinawa-Hotels.html",
-        # "http://www.tripadvisor.cn/Hotels-g298173-Yokohama_Kanagawa_Prefecture_Kanto-Hotels.html",
-        # "http://www.tripadvisor.cn/Hotels-g298562-Kobe_Hyogo_Prefecture_Kinki-Hotels.html",
-        # "http://www.tripadvisor.cn/Hotels-g298106-Nagoya_Aichi_Prefecture_Chubu-Hotels.html",
-        # "http://www.tripadvisor.cn/Hotels-g298249-Sendai_Miyagi_Prefecture_Tohoku-Hotels.html",
-        # "http://www.tripadvisor.cn/Hotels-g298172-Kawasaki_Kanagawa_Prefecture_Kanto-Hotels.html",
-        # "http://www.tripadvisor.cn/Hotels-g303160-Kitakyushu_Fukuoka_Prefecture_Kyushu_Okinawa-Hotels.html",
-        # "http://www.tripadvisor.cn/Hotels-g303160-Kitakyushu_Fukuoka_Prefecture_Kyushu_Okinawa-Hotels.html",
-        # "http://www.tripadvisor.cn/Hotels-g298180-Saitama_Saitama_Prefecture_Kanto-Hotels.html",
-        # "http://www.tripadvisor.cn/Hotels-g298124-Shizuoka_Shizuoka_Prefecture_Chubu-Hotels.html",
-        # "http://www.tripadvisor.cn/Hotels-g298120-Niigata_Niigata_Prefecture_Chubu-Hotels.html",
-        # "http://www.tripadvisor.cn/Hotels-g298213-Kumamoto_Kumamoto_Prefecture_Kyushu_Okinawa-Hotels.html",
-        # "http://www.tripadvisor.cn/Hotels-g298158-Chiba_Chiba_Prefecture_Kanto-Hotels.html",
-        # "http://www.tripadvisor.cn/Hotels-g298134-Okayama_Okayama_Prefecture_Chugoku-Hotels.html",
-        # "http://www.tripadvisor.cn/Hotels-g303148-Hamamatsu_Shizuoka_Prefecture_Chubu-Hotels.html",
-        # "http://www.tripadvisor.cn/Hotels-g298115-Kanazawa_Ishikawa_Prefecture_Chubu-Hotels.html",
-        # "http://www.tripadvisor.cn/Hotels-g298211-Kagoshima_Kagoshima_Prefecture_Kyushu_Okinawa-Hotels.html",
-        # "http://www.tripadvisor.cn/Hotels-g654326-Sakai_Osaka_Prefecture_Kinki-Hotels.html",
-        # "http://www.tripadvisor.cn/Hotels-g298230-Matsuyama_Ehime_Prefecture_Shikoku-Hotels.html",
-        # "http://www.tripadvisor.cn/Hotels-g298191-Himeji_Hyogo_Prefecture_Kinki-Hotels.html",
-        # "http://www.tripadvisor.cn/Hotels-g298183-Utsunomiya_Tochigi_Prefecture_Kanto-Hotels.html",
-        # "http://www.tripadvisor.cn/Hotels-g298232-Takamatsu_Kagawa_Prefecture_Shikoku-Hotels.html",
-        # "http://www.tripadvisor.cn/Hotels-g298112-Gifu_Gifu_Prefecture_Chubu-Hotels.html",
-        # "http://www.tripadvisor.cn/Hotels-g1021282-Sagamihara_Kanagawa_Prefecture_Kanto-Hotels.html",
-        # "http://www.tripadvisor.cn/Tourism-g298215-Miyazaki_Miyazaki_Prefecture_Kyushu_Okinawa-Vacations.html",
-        # "http://www.tripadvisor.cn/Hotels-g298568-Nagasaki_Nagasaki_Prefecture_Kyushu_Okinawa-Hotels.html",
-        # "http://www.tripadvisor.cn/Hotels-g298126-Toyama_Toyama_Prefecture_Chubu-Hotels.html",
-        # "http://www.tripadvisor.cn/Hotels-g298234-Kochi_Kochi_Prefecture_Shikoku-Hotels.html",
-        # "http://www.tripadvisor.cn/Hotels-g298220-Oita_Oita_Prefecture_Kyushu_Okinawa-Hotels.html",
-        # "http://www.tripadvisor.cn/Hotels-g298204-Wakayama_Wakayama_Prefecture_Kinki-Hotels.html",
-        # "http://www.tripadvisor.cn/Hotels-g1060898-Hachioji_Tokyo_Prefecture_Kanto-Hotels.html",
-        # "http://www.tripadvisor.cn/Hotels-g298198-Nara_Nara_Prefecture_Kinki-Hotels.html",
-        # "http://www.tripadvisor.cn/Hotels-g651653-Takasaki_Gunma_Prefecture_Kanto-Hotels.html",
-        # "http://www.tripadvisor.cn/Hotels-g1021147-Funabashi_Chiba_Prefecture_Kanto-Hotels.html",
-        # "http://www.tripadvisor.cn/Hotels-g1021277-Fujisawa_Kanagawa_Prefecture_Kanto-Hotels.html",
-        # "http://www.tripadvisor.cn/Hotels-g298131-Fukuyama_Hiroshima_Prefecture_Chugoku-Hotels.html",
-        # "http://www.tripadvisor.cn/Hotels-g298151-Hakodate_Hokkaido-Hotels.html",
-        # "http://www.tripadvisor.cn/Hotels-g1022819-Nishinomiya_Hyogo_Prefecture_Kinki-Hotels.html",
-        # "http://www.tripadvisor.cn/Hotels-g298118-Matsumoto_Nagano_Prefecture_Chubu-Hotels.html",
-        # "http://www.tripadvisor.cn/Hotels-g1023536-Higashiosaka_Osaka_Prefecture_Kinki-Hotels.html",
-        # "http://www.tripadvisor.cn/Hotels-g1022817-Amagasaki_Hyogo_Prefecture_Kinki-Hotels.html",
-        # "http://www.tripadvisor.cn/Hotels-g298110-Fukui_Fukui_Prefecture_Chubu-Hotels.html",
-        # "http://www.tripadvisor.cn/Hotels-g1021366-Kawaguchi_Saitama_Prefecture_Kanto-Hotels.html",
-        # "http://www.tripadvisor.cn/Hotels-g298133-Kurashiki_Okayama_Prefecture_Chugoku-Hotels.html",
-        # "http://www.tripadvisor.cn/Hotels-g298247-Morioka_Iwate_Prefecture_Tohoku-Hotels.html",
-        # "http://www.tripadvisor.cn/Hotels-g1060900-Musashino_Tokyo_Prefecture_Kanto-Hotels.html",
-        # "http://www.tripadvisor.cn/Hotels-g298236-Tokushima_Tokushima_Prefecture_Shikoku-Hotels.html",
-        # "http://www.tripadvisor.cn/Hotels-g298107-Toyohashi_Aichi_Prefecture_Chubu-Hotels.html",
-        # "http://www.tripadvisor.cn/Hotels-g319103-Asahikawa_Hokkaido-Hotels.html",
-        # "http://www.tripadvisor.cn/Hotels-g298166-Mito_Ibaraki_Prefecture_Kanto-Hotels.html",
-        # "http://www.tripadvisor.cn/Hotels-g298239-Akita_Akita_Prefecture_Tohoku-Hotels.html",
-        # "http://www.tripadvisor.cn/Hotels-g1023191-Yamagata_Yamagata_Prefecture_Tohoku-Hotels.html",
-        # "http://www.tripadvisor.cn/Hotels-g303156-Kamakura_Kanagawa_Prefecture_Kanto-Hotels.html",
-        # "http://www.tripadvisor.cn/Hotels-g298174-Yokosuka_Kanagawa_Prefecture_Kanto-Hotels.html",
-        # "http://www.tripadvisor.cn/Hotels-g1019661-Toyota_Aichi_Prefecture_Chubu-Hotels.html",
-        # "http://www.tripadvisor.cn/Hotels-g1060907-Machida_Tokyo_Prefecture_Kanto-Hotels.html",
-        # "http://www.tripadvisor.cn/Hotels-g298202-Otsu_Shiga_Prefecture_Kinki-Hotels.html",
-        # "http://www.tripadvisor.cn/Hotels-g303151-Matsudo_Chiba_Prefecture_Kanto-Hotels.html",
-        # "http://www.tripadvisor.cn/Hotels-g298241-Aomori_Aomori_Prefecture_Tohoku-Hotels.html",
-        # "http://www.tripadvisor.cn/Hotels-g298245-Koriyama_Fukushima_Prefecture_Tohoku-Hotels.html",
-        # "http://www.tripadvisor.cn/Hotels-g780846-Iwaki_Fukushima_Prefecture_Tohoku-Hotels.html",
-        # "http://www.tripadvisor.cn/Hotels-g1021146-Ichikawa_Chiba_Prefecture_Kanto-Hotels.html",
-        # "http://www.tripadvisor.cn/Hotels-g298128-Kofu_Yamanashi_Prefecture_Chubu-Hotels.html",
-        # "http://www.tripadvisor.cn/Hotels-g298244-Fukushima_Fukushima_Prefecture_Tohoku-Hotels.html",
         "http://www.tripadvisor.cn/Hotels-g294232-Japan-Hotels.html",
     ]
 
@@ -90,14 +19,19 @@ class JapanHotelSpider(Spider):
 
     def parse(self, response):
         self.logger.info("Hotel list page url: %s" % response.url)
+        for city in response.xpath('//div[@class="geo_name"]/a/@href').extract():
+            url = response.urljoin(city)
+            yield Request(url, callback=self.parse_hotel_list)
+
+        next_page = response.xpath('//div[starts-with(@class, "unified pagination")]/a/@href')
+        if next_page:
+            url = response.urljoin(next_page[-1].extract())
+            yield Request(url, self.parse)
+
+    def parse_hotel_list(self, response):
         for href in response.xpath('//div[@class="listing_title"]/a/@href'):
             url = response.urljoin(href.extract())
             yield Request(url, callback=self.parse_hotel)
-
-        next_page = response.xpath('//div[@class="unified pagination standard_pagination"]/child::*[2][self::a]/@href')
-        if next_page:
-            url = response.urljoin(next_page[0].extract())
-            yield Request(url, self.parse)
 
     def parse_hotel(self, response):
         item = HotelItem()
