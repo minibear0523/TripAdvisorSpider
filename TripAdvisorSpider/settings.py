@@ -85,7 +85,7 @@ LOG_ENABLE = True
 LOG_ENCODINGS = 'utf-8'
 LOG_FORMAT = '[%(name)s: %(levelname)s] %(asctime)s: %(message)s'
 LOG_DATEFORMAT = '%m-%d %H:%M:%S'
-# LOG_FILE = '/path/to/log'
+LOG_FILE = '/home/minibear/log/scrapy/TripAdvisorSpider.log'
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See http://doc.scrapy.org/en/latest/topics/autothrottle.html
